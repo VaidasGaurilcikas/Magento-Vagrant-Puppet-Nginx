@@ -1,40 +1,27 @@
-Magento-Vagrant-Puppet-Nginx
-============================
+##The Box
 
-## Installs
+Creates a PHP, MySQL & nginx developent environment using Vagrant and imports a dev db copy into a newly created database
 
-* Magento
+##Features
+
 * MySQL
 * PHP
 * PHP-FPM
+* PHP-APC
 * Nginx
-* n98-magerun
+* Memcached
 
-## Setup
+##Setup
+
+* cd to your project's webroot
+* put your development db copy at db/dev_db.sql
 
 ``` sh
+git submodule add git@github.com/VaidasGaurilcikas/thebox
 git submodule init
 git submodule update
+vagrant init
 vagrant up
 ```
 
-Modify puppet/manifests/base.pp
 
-
-``` puppet
-class { "magento":
-  install_magento     => true,
-  magento_version     => "magento-ce-1.6.2.0",
-  install_sample_data => true
-}
-```
-
-Valid Magento Versions:
-
-* magento-ce-1.6.2.0
-* magento-ce-1.7.0.2
-* mageplus-master
-* magento-mirror-1.4.2.0
-* magento-mirror-1.5.1.0
-* magento-mirror-1.6.2.0
-* magento-ce-2.0.0.0-dev
