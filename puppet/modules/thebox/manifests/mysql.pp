@@ -26,7 +26,7 @@ class thebox::mysql {
         path   => '/vagrant/db/dev_db.sql',
     }
 
-    mysql::db { "alex_mag":
+    mysql::db { "dev_local":
         user     => 'dev_local',
         password => 'dev_local',
         host     => 'localhost',
