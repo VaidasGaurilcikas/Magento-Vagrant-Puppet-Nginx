@@ -3,7 +3,6 @@ class thebox::php {
     php::module { ['curl', 'xdebug', 'mysql',  'gd', 'mcrypt', 'cgi', 'memcache']:
         require => Class["php::install", "php::config"]
     }
-
     php::conf { [ 'pdo' ]:
         source  => 'puppet:///modules/thebox/etc/php5/conf.d/pdo.ini',
         require => Class["php::install", "php::config"],
@@ -13,7 +12,7 @@ class thebox::php {
         require => Class["php::install", "php::config"],
     }
     php::conf { [ 'core' ]:
-        source  => 'puppet:///modules/thebox/etc/php5/conf.d/memory.ini',
+        source  => 'puppet:///modules/thebox/etc/php5/conf.d/core.ini',
         require => Class["php::install", "php::config"],
     }
 
