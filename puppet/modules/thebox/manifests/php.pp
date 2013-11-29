@@ -5,11 +5,15 @@ class thebox::php {
     }
 
     php::conf { [ 'pdo' ]:
-        source  => 'puppet:///modules/magento/etc/php5/conf.d/pdo.ini',
+        source  => 'puppet:///modules/thebox/etc/php5/conf.d/pdo.ini',
         require => Class["php::install", "php::config"],
     }
     php::conf { [ 'pdo_mysql' ]:
-        source  => 'puppet:///modules/magento/etc/php5/conf.d/pdo_mysql.ini',
+        source  => 'puppet:///modules/thebox/etc/php5/conf.d/pdo_mysql.ini',
+        require => Class["php::install", "php::config"],
+    }
+    php::conf { [ 'core' ]:
+        source  => 'puppet:///modules/thebox/etc/php5/conf.d/memory.ini',
         require => Class["php::install", "php::config"],
     }
 
