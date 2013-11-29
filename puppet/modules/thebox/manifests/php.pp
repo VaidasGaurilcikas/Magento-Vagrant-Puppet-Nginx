@@ -1,6 +1,6 @@
-class magento::php {
+class thebox::php {
     include php
-    php::module { ['curl', 'xdebug', 'mysql',  'gd', 'mcrypt', 'cgi']:
+    php::module { ['curl', 'xdebug', 'mysql',  'gd', 'mcrypt', 'cgi', 'memcache']:
         require => Class["php::install", "php::config"]
     }
 
@@ -12,4 +12,5 @@ class magento::php {
         source  => 'puppet:///modules/magento/etc/php5/conf.d/pdo_mysql.ini',
         require => Class["php::install", "php::config"],
     }
+
 }

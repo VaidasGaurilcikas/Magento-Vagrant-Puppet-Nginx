@@ -1,8 +1,8 @@
-class magento::nginx {
+class thebox::nginx {
     include ::nginx
-    ::nginx::resource::vhost { 'magento.local':
+    ::nginx::resource::vhost { 'box.localhost':
         ensure           => present,
-        www_root         => '/vagrant_data',
+        www_root         => '/var/www',
         location_options => { try_files => "try_files \$uri \$uri/ @handler" },
         locations => {
             1 => { location => "^~ /app/",                options => [ "deny all" ] },
@@ -20,13 +20,23 @@ class magento::nginx {
                 }
             },
             10 => {
+                location => "~ /(skin|media)/",
+                options => [ "access_log off",
+                             "expires 30d"
+                ]
+            },
+            11 => {
                 location => '~ [^/]\.php(/|$)',
                 options => [
                     "if (!-e \$request_filename) { rewrite / /index.php last; } #",
                     "fastcgi_param SCRIPT_FILENAME \$document_root\$fastcgi_script_name",
+					"fastcgi_param MAGE_ROOT_DIR /var/www",
                     "fastcgi_pass  127.0.0.1:9000",
                     "fastcgi_index index.php",
-                    "include       fastcgi_params",
+					"fastcgi_param HTTP_HOST box.localhost",
+					"fastcgi_param MAGE_IS_DEVELOPER_MODE 1",
+                    "include fastcgi_params",
+					"fastcgi_read_timeout 18000"
                 ]
             }
         }

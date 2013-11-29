@@ -22,3 +22,9 @@
 [submodule "puppet/modules/n98magerun"]
 	path = puppet/modules/n98magerun
 	url = git://github.com/cmuench/puppet-n98magerun
+[submodule "puppet/modules/memcached"]
+	path = puppet/modules/memcached
+	url = git://github.com/danakim/puppet-memcached
+[submodule "puppet/modules/apc"]
+	path = puppet/modules/apc
+	url = git://github.com/ridonkulous/puppet-apc
