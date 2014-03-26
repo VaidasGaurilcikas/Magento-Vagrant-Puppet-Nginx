@@ -20,6 +20,9 @@ Creates a PHP, MySQL & nginx developent environment using Vagrant and imports a 
 git submodule add git://git@github.com/VaidasGaurilcikas/thebox
 git submodule init
 git submodule update
+cd thebox
+git submodule init
+cd ..
 cp thebox/Vagrantfile .
 vagrant up
 ```
