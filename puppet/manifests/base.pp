@@ -1,7 +1,7 @@
 node default {
-
+	
     class { "apt":
-        always_apt_update => true
+        always_apt_update => false
     }
 
     Exec { path => [ "/bin/", "/sbin/", "/usr/bin/", "/usr/sbin/", "/usr/local/bin", "/usr/local/sbin"] }
@@ -13,4 +13,5 @@ node default {
     include git
 
     class { "thebox": }
+
 }

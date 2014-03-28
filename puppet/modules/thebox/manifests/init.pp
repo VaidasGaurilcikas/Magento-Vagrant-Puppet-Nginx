@@ -1,9 +1,11 @@
 class thebox() {
 
-    host { "box.localhost":
+	include thebox::config
+	
+	host { $thebox::config::hostname:
         ip => "127.0.0.1"
     }
-
+	
     include thebox::nginx
     include thebox::mysql
     include thebox::php
@@ -18,6 +20,6 @@ class thebox() {
        logfile        => '/var/log/memcached.log',
     }
 
-
+    class { 'redis': }
 
 }

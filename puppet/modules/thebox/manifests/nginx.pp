@@ -1,6 +1,6 @@
 class thebox::nginx {
     include ::nginx
-    ::nginx::resource::vhost { 'box.localhost':
+    ::nginx::resource::vhost { $thebox::config::hostname:
         ensure           => present,
         www_root         => '/var/www',
         location_options => { try_files => "try_files \$uri \$uri/ @handler" },
@@ -33,7 +33,7 @@ class thebox::nginx {
 					"fastcgi_param MAGE_ROOT_DIR /var/www",
                     "fastcgi_pass  127.0.0.1:9000",
                     "fastcgi_index index.php",
-					"fastcgi_param HTTP_HOST box.localhost",
+					${"fastcgi_param HTTP_HOST"}${thebox::config::hostname},
 					"fastcgi_param MAGE_IS_DEVELOPER_MODE 1",
                     "include fastcgi_params",
 					"fastcgi_read_timeout 18000"

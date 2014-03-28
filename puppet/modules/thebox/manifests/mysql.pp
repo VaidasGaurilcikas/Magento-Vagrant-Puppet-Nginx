@@ -7,6 +7,7 @@ class thebox::mysql {
         override_options => { 'mysqld' => {
             'innodb_file_per_table' => '1',
             'max_connections' => '16',
+			'bind_address' => '0.0.0.0',
              'query_cache_type' => '1',
              'query_cache_size' => '64M',
              'join_buffer_size' => '176K',
@@ -23,16 +24,16 @@ class thebox::mysql {
     file {
         "dev_db":
         ensure => file,
-        path   => '/vagrant/db/dev_db.sql',
+        path   => $thebox::config::dbpath
     }
 
     mysql::db { "dev_local":
-        user     => 'dev_local',
-        password => 'dev_local',
-        host     => 'localhost',
+        user     => $thebox::config::dbuser,
+        password => $thebox::config::dbpass,
+        host     => $thebox::config::dbhost,
         grant    => ['all'],
         charset => 'utf8',
-        sql      =>  '/vagrant/db/dev_db.sql',
+        sql      =>  $thebox::config::dbpath,
         require  => File["dev_db"],
         import_timeout => 900,
     }
