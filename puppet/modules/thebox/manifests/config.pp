@@ -1,7 +1,8 @@
 class thebox::config {
 	$hostname = 'box.localhost'
-	$dbpath = '/vagrant/db/dev_db.sql'
+	$dbpath = '/vagrant/db/bikes.sql'
 	$dbuser = 'dev_local'
 	$dbpass = 'dev_local'
 	$dbhost = 'localhost'
+	$phpversion = '5.3' 
 }
