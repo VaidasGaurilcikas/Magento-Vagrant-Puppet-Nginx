@@ -22,6 +22,7 @@ git submodule init
 git submodule update
 cd thebox
 git submodule init
+git submodule update
 cd ..
 cp thebox/Vagrantfile .
 vagrant up
