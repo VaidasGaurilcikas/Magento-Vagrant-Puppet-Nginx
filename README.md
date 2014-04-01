@@ -17,7 +17,7 @@ Creates a PHP, MySQL & nginx developent environment using Vagrant and imports a 
 * put your development db copy at db/dev_db.sql
 
 ``` sh
-git submodule add git://git@github.com/VaidasGaurilcikas/thebox
+git submodule add git@github.com:VaidasGaurilcikas/thebox.git
 git submodule init
 git submodule update
 cd thebox
