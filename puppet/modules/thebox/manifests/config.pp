@@ -4,5 +4,4 @@ class thebox::config {
 	$dbuser = 'dev_local'
 	$dbpass = 'dev_local'
 	$dbhost = 'localhost'
-	$phpversion = '5.3' 
 }
